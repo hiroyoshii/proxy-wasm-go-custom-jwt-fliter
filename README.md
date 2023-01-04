@@ -1,12 +1,13 @@
 # overview
 - try to implement JWT verification by proxy-wasm-go-sdk
-- **this plugin does not work following reasone**
+- **this plugin does not work following reason**
   -  http call is dispatched, but the callback function is never invoked & the request continues to the upstream application.
     - https://github.com/tetratelabs/proxy-wasm-go-sdk/issues/278
   - if add blocing by sync.WaitGroup, time.Sleep or channel, following build error is occured.
     ```
     blocking operation in exported function: proxy_on_request_headers
     ```
+  - JWT signature verification is not implemented because tinygo does not support crypto/rsa package.
 
 # build & deploy wasm proxy image
 ## wasme 
